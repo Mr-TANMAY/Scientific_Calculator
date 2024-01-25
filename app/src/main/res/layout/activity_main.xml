@@ -56,8 +56,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal"
-                android:weightSum="4"
-                >
+                android:weightSum="4">
                 <Button
                     android:id="@+id/idBtnAC"
                     android:layout_width="0dp"
@@ -463,10 +462,6 @@
                     android:textColor="@color/yellow"
                     android:textSize="15dp"/>
             </LinearLayout>
-
-
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 </RelativeLayout>

@@ -156,16 +156,10 @@ class MainActivity : AppCompatActivity() {
             primaryTV.text = (primaryTV.text.toString() + "log")
         }
         minusBtn.setOnClickListener {
-            val str: String = primaryTV.toString()
-            if (!str.get(index = str.length - 1).equals("-")) {
-                primaryTV.text = (primaryTV.toString() + "-")
-            }
+            primaryTV.text = (primaryTV.text.toString() + "-")
         }
         multyBtn.setOnClickListener {
-            val str: String = primaryTV.toString()
-            if (!str.get(index = str.length - 1).equals("*")) {
-                primaryTV.text = (primaryTV.toString() + "*")
-            }
+            primaryTV.text = (primaryTV.text.toString() + "*")
         }
         rootBtn.setOnClickListener {
             if (primaryTV.text.toString().isEmpty()) {
