@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         twoBtn.setOnClickListener {
-            primaryTV.text = (primaryTV.text.toString() + "3")
+            primaryTV.text = (primaryTV.text.toString() + "2")
 
         }
         threeBtn.setOnClickListener {
@@ -147,7 +147,16 @@ class MainActivity : AppCompatActivity() {
             primaryTV.text = (primaryTV.text.toString() + "tan")
         }
         inverseBtn.setOnClickListener {
-            primaryTV.text = (primaryTV.text.toString() + "^" + "(-1)")
+            if (primaryTV.text.toString().isEmpty()) {
+                Toast.makeText(this, "please enter a valid number", Toast.LENGTH_SHORT).show()
+            } else {
+                val num: Int = primaryTV.text.toString().toInt()
+                val inverse = calculateInverse(num)
+                primaryTV.text = (primaryTV.text.toString() + "^"+"(-1)")
+                secondaryTV.text = inverse.toString()
+                primaryTV.text = inverse.toString()
+
+            }
         }
         lnBtn.setOnClickListener {
             primaryTV.text = (primaryTV.text.toString() + "ln")
@@ -166,9 +175,8 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter a valid number", Toast.LENGTH_SHORT).show()
             } else {
                 val str: String = primaryTV.text.toString()
-                val r = Math.sqrt(str.toDouble())
-                val result = r.toString()
-                primaryTV.text = result
+                val result = Math.sqrt(str.toDouble())
+                primaryTV.text = result.toString()
             }
         }
         acBtn.setOnClickListener {
@@ -193,13 +201,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
         factBtn.setOnClickListener {
-            if (primaryTV.toString().isEmpty()) {
+            if (primaryTV.text.toString().isEmpty()) {
                 Toast.makeText(this, "please enter a valid number", Toast.LENGTH_SHORT).show()
             } else {
-                val value: Int = primaryTV.toString().toInt()
-                val fact: Int = factorial(value)
-                primaryTV.text = fact.toString()
+                val value: Int = primaryTV.text.toString().toInt()
+                val fact = factorial(value)
+                primaryTV.text = (primaryTV.text.toString() + "!")
                 secondaryTV.text = fact.toString()
+                primaryTV.text = fact.toString()
 
             }
         }
@@ -211,6 +220,13 @@ class MainActivity : AppCompatActivity() {
             secondaryTV.text = str
         }
 
+    }
+    fun calculateInverse(number: Int): Double {
+        if (number == 0.0.toInt()) {
+            throw IllegalArgumentException("Cannot calculate the inverse of zero.")
+        }
+
+        return 1.0 / number
     }
 
     fun factorial(n: Int): Int {
